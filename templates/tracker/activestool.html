@@ -1,0 +1,112 @@
+{% extends "tracker/Base.html" %}
+{% block body %}
+<h5 style="text-align: center"> XP History for Actives starts on 2019-03-05</h5>
+<h6 style="text-align: center"> Users without data for both dates are not shown</h5>
+<a class="navbar-brand customgradient" href="/dash/">Check out some neato charts instead</a>    
+
+<form action="" class="form-inline" method="POST">
+    <strong> &nbsp; From: &nbsp;</strong>
+    <div class="form-row date" data-provider="datepicker">
+        <input type="date" class="form-control" date-date-end-date="0d" value= "{{ request.form.startdate }}" name="startdate">
+        
+    </div>
+  
+   <strong>&nbsp;&nbsp; To: &nbsp;&nbsp;</strong>
+    <div class='form-row date'>
+        <div class="form-group">
+            <div class='input-group date' id='enddate'>
+                <input type='date' class="form-control" date-date-end-date="0d" value = "{{ request.form.enddate }}" name="enddate"/>
+            </div>
+        </div>
+    </div>
+
+<div>
+    <input class="btn btn-info" type="submit" value="change timeframe" style="margin-left: 35px">    
+</div>
+</form>
+
+
+<script type="text/javascript">
+    $(function () {
+        $('#startdate').datetimepicker();
+        $('#enddate').datetimepicker({
+            useCurrent: true //Important! See issue #1075
+        });
+        $("#startdate").on("dp.change", function (e) {
+            $('#enddate').data("DateTimePicker").minDate(e.date);
+        });
+        $("#enddate").on("dp.change", function (e) {
+            $('#startdate').data("DateTimePicker").maxDate(e.date);
+        });
+    });
+</script>
+
+<table class="table table-sm table-hover table-inverted table-striped table-dark" id='sexample' style='min-width: 100%; margin-bottom: 0'>
+    <thead><tr>
+        <th></th>
+        <th onclick="sortTable(0)">Name</th>
+		<th onclick="sortTable(1)">Clan</th>
+        <th style='text-align:right' onclick="sortTable(2)"> {{ startdate }} </th>
+        <th style='text-align:right' onclick="sortTable(3)"> {{ enddate }} </th> 
+        <th style='text-align:right' onclick="sortTable(4)">change in total actions</th>
+        <!--<th style='text-align:right' onclick="sortTable(5)">avg actions per day</th> -->
+        <th style='text-align:right' onclick="sortTable(5)">change in xp </th>
+        <th style='text-align:right'> Highest mob kill </th>
+    </tr></thead>
+	<tbody>
+{% for name in subdata2 %} 
+    
+    {% if startdate in subdata2[name] %}
+        {% if enddate in subdata2[name] %}
+         <!-- contains both dates -->
+        <tr>
+            <td></td>
+            <td> {{ name }} </td>
+            <td> {{ subdata2[name]["clan"] }} </td>
+    	      
+			<td align='right'> {{ subdata2[name][startdate][0] }} </td>
+			<td align='right'> {{ subdata2[name][enddate][0] }} </td> 
+			<td align='right'> {{ subdata2[name][enddate][0] - subdata2[name][startdate][0] }} </td> <!--
+			<td align='right'> {{ (subdata2[name][enddate][0] - subdata2[name][startdate][0])/1 }} </td> -->
+            <td align='right'> {{ (subdata2[name][enddate][1] - subdata2[name][startdate][1])}} </td>
+            <td align='right'> {{ subdata2[name]["highmob"] }} </td>
+		{% else %}
+        <!-- contains only the first date -->
+		<!-- start xp, end xp, change, ##avg##, xp -->
+        {{ continue }}
+		<!-- <td align='right'> {{ subdata2[name][startdate][0] }} </td><td></td><td>-</td><td>-</td><td>-</td> -->
+        {% endif %}
+    {% else %}
+    {{ continue }}
+    <!--
+   <td align='right'>0</td><td align='right'> {{ subdata2[name][enddate][0] }} </td><td align='right'> {{ subdata2[name][enddate][0] }} </td> <td align='right'> {{ subdata2[name][enddate][0] }} </td><td>-</td> -->
+    {% endif %}
+	</tr>    
+
+{% endfor %} 
+    </tbody>
+</table>
+<script>
+$(document).ready( function () {
+    var t = $('#sexample').DataTable( {
+     "paging":   false,
+     "scrollX": true,
+     "searching":true,
+      "columnDefs": [ {
+            "searchable": false,
+            "orderable": false,
+            "targets": 0
+        } ],
+        "order": [[ 1, 'asc' ]] })
+
+     t.on( 'order.dt search.dt', function () {
+    var PageInfo = $('#sexample').DataTable().page.info();
+         t.column(0, { page: 'current' }).nodes().each( function (cell, i) {
+            cell.innerHTML = i + 1 + PageInfo.start;
+        } );
+    } ).draw();
+} );</script>
+
+ 
+
+{% endblock %}

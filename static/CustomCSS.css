@@ -1,0 +1,96 @@
+.table-primary{
+	background-color: #0a0a0a;
+	}
+	
+
+.bg-primary{
+	background-color:#0a0a0a !important;
+	border-radius:15px;
+	margin:1px;
+}
+.customgradient{
+	background:radial-gradient(black 80%, blue);
+	max-width:60%;
+	margin:0 auto;
+	transition: background .6s ease;
+}
+.customgradient:hover{
+	background:radial-gradient(black 50%, #7a7aef);
+}	
+th {
+	color:#1100dd;
+	text-shadow: 0 0 3px #336;	
+}
+tr:hover {
+	background:linear-gradient(#8a8aef, #090934);
+}
+a:visited{
+	color:#da02e5;
+	text-shadow: 0 0 5px #dc03e7;
+	
+}
+#recipe #ListOfIngredients{
+	
+	color:#ff69b4;
+}
+.table-dark{
+	background-color:black;
+}
+
+.table-dark td{
+	border-right-style:solid;
+	border-right-color:#baff1c;
+	padding-left:11px;
+	padding-right:5px;
+	border-bottom-style:groove;
+	border-bottom-color:#331158;
+	border-left-style:groove;
+	border-left-color:#331158;
+}
+.plainTable{
+	border:none;
+	background-color:black;
+	color:#f0f0ff;
+	border-right-style:none;
+	border-right-color:#000;
+	padding-left:11px;
+	padding-right:5px;
+	border-bottom-style:none;
+	border-bottom-color:black;
+	border-left-style:none;
+	border-left-color:black;
+	}
+	
+.plainTable td{
+	border:none;
+	background-color:black;
+	color:#f0f0ff;
+	border-right-style:none;
+	border-right-color:#000;
+	padding-left:11px;
+	padding-right:5px;
+	border-bottom-style:none;
+	border-bottom-color:black;
+	border-left-style:none;
+	border-left-color:black;
+	}
+	
+.btn-alert{
+	border-right-style:groove;
+	border-right-color:#220047;
+	border-right-width:thin;
+	border-bottom-style:groove;
+	border-bottom-color:#220047;
+	border-bottom-width:thin;
+	box-shadow: 3px 2px #8a8aef;
+	padding: 10px;
+	background-color:#090934;
+}
+h5{
+	color:#e0e0fb;
+}
+h4{
+	font-family: 'Eczar', serif;
+	color:#f0f0ff;
+	text-align:center;
+	padding:10px;}

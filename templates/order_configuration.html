@@ -1,0 +1,120 @@
+{% extends "Base.html" %}
+{% block body %}
+
+<div id="Ingcounts" class="tab-pane navbar-dark">
+	<div style="float:left">
+		<form action = "" method="POST">
+			<h5> Gem Tier (lvl/10) </h5>
+			<select name='select_tier' >
+					<option value=0> Select Tier
+					{% for i in range(10,61) %} <option value="{{ i }}"> {{ i }} </option>
+					{% endfor %}
+				</select>
+				
+		<h5>Boots</h5>
+			<select name="bootsprimgem">
+				
+				<option value= "none"> Select Primary
+		
+					{% for piss in List_of_boot_gems %}
+					<option value="{{ piss }}">{{ piss }} {% endfor %} </option>
+				
+				</select>
+				<select name="bootssecgem">      				
+					<option value="none">Select Secondary
+					{% for piss in List_of_boot_gems %}
+					<option value="{{ piss }}">{{ piss }} {% endfor %} </option>
+				</select>
+				
+		<h5>Helmet</h5>
+			<select name="helmetprimgem">
+				<option value= "none"> Select Primary
+				{% for piss in List_of_helmet_gems %}
+					<option value="{{ piss }}">{{ piss }} {% endfor %}
+				</select>
+				<select name="helmetsecgem">      				
+					<option value="none">Select Secondary
+					{% for piss in List_of_helmet_gems %}
+					<option value="{{ piss }}">{{ piss }} {% endfor %} 
+				</select>
+		
+		<h5>Breastplate</h5>
+			<select name="boobsprimgem">
+				<option value= "none"> Select Primary
+				{% for piss in List_of_breastplate_gems %}
+					<option value="{{ piss }}">{{ piss }} {% endfor %}
+				</select>
+				<select name="boobssecgem">      				
+					<option value="none">Select Secondary
+					{% for piss in List_of_breastplate_gems %}
+					<option value="{{ piss }}">{{ piss }} {% endfor %} 
+				</select>
+				
+		<h5>Gloves</h5>
+			<select name="glovesprimgem">
+				<option value= "none"> Select Primary
+				{% for piss in List_of_glove_gems %}
+					<option value="{{ piss }}">{{ piss }} {% endfor %}
+				</select>
+				<select name="glovessecgem">      				
+					<option value="none">Select Secondary
+					{% for piss in List_of_glove_gems %}
+					<option value="{{ piss }}">{{ piss }} {% endfor %} 
+				</select>
+		
+		<h5>Shield/Quiver</h5>
+			<select name="shieldprimgem">
+				<option value= "none"> Select Primary
+				{% for piss in List_of_offhand_gems %}
+					<option value="{{ piss }}">{{ piss }} {% endfor %}
+				</select>
+				<select name="shieldsecgem">      				
+					<option value="none">Select Secondary
+					{% for piss in List_of_offhand_gems %}
+					<option value="{{ piss }}">{{ piss }} {% endfor %} 
+				</select>
+				
+		<h5>Weapon</h5>
+			<select name="weps_primgem">
+				<option value= "none"> Select Primary
+				{% for piss in List_of_weapon_gems %}
+					<option value="{{ piss }}">{{ piss }} {% endfor %}
+				</select>
+				<select name="weps_secgem">      				
+					<option value="none">Select Secondary
+					{% for piss in List_of_weapon_gems %}
+					<option value="{{ piss }}">{{ piss }} {% endfor %} 
+				</select>
+			<br/>
+			<br/>
+			 <input class="btn btn-info" type="submit" value="Generate Table" style="margin:auto">
+
+			 <br/>
+      	 </form>
+	</div>
+    <div style="float:right; margin-top:10px; margin-right:10%;">
+       	<table id="resultstable" class="plainTable">
+			<thead> 
+			<tr><th> # </th><th style="min-width:230px;">Ingredients</th></tr>
+			</thead>
+			<tbody>
+			{% for item in ingr_dict %}
+			<tr><td> {{ingr_dict[item] }}</td><td> {{ item }} </td></tr>
+			{% endfor %}
+			</tbody>
+		</table>     	 	
+	</div>
+<!--	<div id='inventory' style='display:inline-block; float: none;min-width: 90%; margin-top: 20px;'>
+		<form action = "" method="POST">
+			copy and paste your ingredient screen here (do not include the header row): 
+			<input name='inventoryingrs' type='text'><br/> 
+			<input class="btn btn-info updateButton" type='submit' value="Get Value" style="margin:auto" name='inventorybutton'>
+			<p>Total Market cost of these ingredients is: {{ "{:,}".format(TotalBank) }}</p>	
+      	 </form>
+    </div>
+   -->
+
+</div>
+
+
+{% endblock %}  

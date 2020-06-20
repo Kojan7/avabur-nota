@@ -1,0 +1,53 @@
+{% extends "tracker/Base.html" %}
+{% block body %}
+
+<ul class="nav nav-pills nav-justified">
+  <li class="active alert-primary"><a data-toggle="pill" href="#combat">&nbsp;Combat&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+  <li class="alert-primary"><a data-toggle="pill" href="#fish">&nbsp;Fishing&nbsp;&nbsp;&nbsp;</a></li>
+  <li class="alert-primary"><a data-toggle="pill" href="#wood">&nbsp;Woodcutting&nbsp;</a></li>
+  <li class="alert-primary"><a data-toggle="pill" href="#mining">&nbsp;Mining&nbsp;&nbsp;&nbsp;</a></li>
+  <li class="alert-primary"><a data-toggle="pill" href="#stoners">&nbsp;Stonecutting&nbsp;</a></li>
+  <li class="alert-primary"><a data-toggle="pill" href="#craft">&nbsp;Crafting&nbsp;&nbsp;&nbsp;</a></li>
+  <li class="alert-primary"><a data-toggle="pill" href="#carve">&nbsp;Carving&nbsp;</a></li>
+</ul>
+<br>
+<div class="tab-content">
+    <div id="combat" class="tab-pane in active">
+        <div id="fight" >
+            <embed type="image/svg+xml" src= {{ combat|safe }} />
+        </div>   
+    </div>
+    <div id="fish" class="tab-pane fade">
+        <div id="fishchart"> 
+            <embed type="image/svg+xml" src= {{ fish|safe }} />
+        </div>
+    </div>
+    <div id="wood" class="tab-pane fade">
+        <div id="woodchart" >
+            <embed type="image/svg+xml" src= {{ wood|safe }} />
+        </div>
+    </div>
+    <div id="mining" class="tab-pane fade">
+        <div id="minechart" >
+            <embed type="image/svg+xml" src= {{ mine|safe }} />
+        </div>   
+    </div>
+    <div id="stoners" class="tab-pane fade">
+        <div id="stonechart"> 
+            <embed type="image/svg+xml" src= {{ stone|safe }} />
+        </div>
+    </div>
+    <div id="craft" class="tab-pane in fade">
+        <div id="craftchart">
+            <embed type="image/svg+xml" src= {{ craft|safe }} />
+        </div>   
+    </div>
+    <div id="carve" class="tab-pane fade">
+        <div id="carvechart"> 
+            <embed type="image/svg+xml" src= {{ carve|safe }} />
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}  

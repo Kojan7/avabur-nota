@@ -1,0 +1,40 @@
+{% extends "tracker/Base.html" %}
+{% block body %}
+
+<ul class="nav nav-pills justify-content-center bg-primary">
+  <li class="active btn-alert"><a data-toggle="pill" href="#xp">&nbsp;&nbsp;&nbsp;&nbsp;XP&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+  <li class="btn-alert"><a data-toggle="pill" href="#gold">&nbsp;Currencies&nbsp;&nbsp;&nbsp;</a></li>
+  <li class="btn-alert"><a data-toggle="pill" href="#resources">&nbsp;Resources&nbsp;</a></li>
+</ul>
+<br>
+<div class="tab-content">
+  <div id="xp" class="tab-pane in active">
+        <div id="xpchart" >
+            <embed type="image/svg+xml" src= {{ xpchart|safe }} />
+        </div> 
+        <div id="dailyxpchart" >
+            <embed type="image/svg+xml" src= {{ dailyxpchart|safe }} />
+        </div> 
+      
+  </div>
+  <div id="gold" class="tab-pane fade bg-primary">
+    <div id="goldchart"> 
+            <embed type="image/svg+xml" src= {{ goldchart|safe }} />
+        </div>
+    <div id="crychart" >
+            <embed type="image/svg+xml" src= {{ crychart|safe }} />
+        </div>
+      <div id="platchart" >
+            <embed type="image/svg+xml" src= {{ platchart|safe }} style="max-height:650px"/>
+             
+        </div>
+  </div>
+  <div id="resources" class="tab-pane fade navbar-dark">
+        <div id="chart" >
+            <embed type="image/svg+xml" src= {{ chart|safe }} style="max-height:650px"/>
+        </div>
+  </div>
+</div>
+
+
+{% endblock %}  

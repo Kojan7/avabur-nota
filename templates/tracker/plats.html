@@ -1,0 +1,21 @@
+{% extends "tracker/Base.html" %}
+{% block body %}
+	<div class = "thinning">
+	<h5> Platinum Donations </h5>
+	<table>
+	<tr><th>Detail</th><th>Personal Totals</th></th>
+	<tr valign="top"><td>{{ donationtable|safe }}</td>
+	<td>{{ chuckchuck|safe }}</td></tr></table>
+ 	</div>
+ 	<br>
+ 	<p style="color:black"> No gold or ingredient contributions factored in above, only Platinum.</p> 
+	
+	
+<script>
+$(document).ready( function () {
+    $('.dataframe').dataTable({
+     "paging":   false,
+     "searching":false});
+} );</script>
+ 	
+{% endblock %}

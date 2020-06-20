@@ -1,0 +1,15 @@
+{% extends "tracker/Base.html" %}
+{% block body %}
+
+
+{% for name in membername %}
+    <p class="text-dark"> {{ name }}</p>
+    <div id= {{ name }} >
+        <embed type="image/svg+xml" src= {{ chartingnames[name]|safe }} /> 
+       
+    </div>
+ 
+
+    {% endfor %}
+ 
+{% endblock %}

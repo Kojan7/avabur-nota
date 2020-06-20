@@ -1,0 +1,88 @@
+{% extends "tracker/Base.html" %}
+{% block body %}
+
+<h5 style="text-align: center"> XP History starts on 2018-01-30</h5>
+<h6 style="text-align: center"> Empty rows indicate data is unavailable for this username for at least 1 of the selected dates</h5>
+<h6 style="text-align:center"> Note: some data missing from early release of Rewrite, March 2018</h6>
+<form action="" class="form-inline" method="POST">
+    <strong> &nbsp; From: &nbsp;</strong>
+    <div class="form-row date" data-provider="datepicker">
+        <input type="date" class="form-control" date-date-end-date="0d" value= "{{ request.form.startdate }}" name="startdate">
+        
+    </div>
+  
+   <strong>&nbsp;&nbsp; To: &nbsp;&nbsp;</strong>
+    <div class='form-row date'>
+        <div class="form-group">
+            <div class='input-group date' id='enddate'>
+                <input type='date' class="form-control" date-date-end-date="0d" value = "{{ request.form.enddate }}" name="enddate"/>
+            </div>
+        </div>
+    </div>
+
+<div>
+    <input class="btn btn-info" type="submit" value="Use these dates" style="margin-left: 35px">    
+</div>
+</form>
+
+
+<script type="text/javascript">
+    $(function () {
+        $('#startdate').datetimepicker();
+        $('#enddate').datetimepicker({
+            useCurrent: true //Important! See issue #1075
+        });
+        $("#startdate").on("dp.change", function (e) {
+            $('#enddate').data("DateTimePicker").minDate(e.date);
+        });
+        $("#enddate").on("dp.change", function (e) {
+            $('#startdate').data("DateTimePicker").maxDate(e.date);
+        });
+    });
+</script>
+
+
+<table class="table table-sm table-hover table-inverted table-striped table-dark" id="example">
+    <thead><tr>
+        <th onclick="sortTable(0)">Name</th>
+        <th style='text-align:right' onclick="sortTable(1)"> {{ startdate }} </th>
+        <th style='text-align:right' onclick="sortTable(2)"> {{ enddate }}</th> 
+        <th style='text-align:right' onclick="sortTable(3)"> Change in XP </th>
+        <th style='text-align:right' onclick="sortTable(4)">Change in Kill Count</th>
+        <th style='text-align:right' onclick="sortTable(5)">Avg XP/Kill</th>
+        <th style='text-align:right' onclick="sortTable(6)">Change in Total Actions</th>
+    </tr></thead>
+    <tbody>
+{% for name in subdata %} 
+    <tr>
+    <td> {{ name }} </td>
+    {% if subdata[name][startdate] %}
+        {% if subdata[name][enddate] %}
+    <td align='right'> {{ '{:,}'.format(subdata[name][startdate][0]) }} </td>
+    <td align='right'> {{ '{:,}'.format(subdata[name][enddate][0]) }} </td> 
+    <td align='right'> {{ '{:,}'.format(subdata[name][enddate][0] - subdata[name][startdate][0]) }} </td>
+    <td align='right'> {{ '{:,}'.format(subdata[name][enddate][1]-subdata[name][startdate][1]) }} </td>
+    {% if subdata[name][enddate][1] != subdata[name][startdate][1] %}
+    <td align='right'> {{ '{0:,.0f}'.format((subdata[name][enddate][0] - subdata[name][startdate][0])/(subdata[name][enddate][1]-subdata[name][startdate][1])) }} </td>
+    {% else %} <td></td>
+    {% endif %}
+    <td align='right'> {{ '{:,}'.format(subdata[name][enddate][2]-subdata[name][startdate][2]) }} </td>
+    {% else %}
+    <td></td><td></td><td></td><td></td><td></td><td></td>
+    {% endif %}
+    {% else %}
+    <td></td><td></td><td></td><td></td><td></td><td></td>
+    {% endif %}
+    </tr>
+
+{% endfor %} 
+    </tbody>
+</table>
+<script>
+$(document).ready( function () {
+    $('#example').dataTable({
+     "paging":   false,
+     "searching":false});
+} );</script>
+ 
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "tracker/Base.html" %}
+{% block body %}
+
+<ul class="nav nav-pills nav-justified">
+  <li class="active alert-primary"><a data-toggle="pill" href="#combat">&nbsp;Combat&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+  <li class="alert-primary"><a data-toggle="pill" href="#fish">&nbsp;Fishing&nbsp;&nbsp;&nbsp;</a></li>
+  <li class="alert-primary"><a data-toggle="pill" href="#wood">&nbsp;Woodcutting&nbsp;</a></li>
+</ul>
+<br>
+<div class="tab-content">
+    <div id="combat" class="tab-pane in active">
+        <div id="fight" >
+            <embed type="image/svg+xml" src= {{ combat|safe }} />
+        </div>   
+    </div>
+    <div id="fish" class="tab-pane fade">
+        <div id="fishchart"> 
+            <embed type="image/svg+xml" src= {{ fish|safe }} />
+        </div>
+    </div>
+    <div id="wood" class="tab-pane fade">
+        <div id="woodchart" >
+            <embed type="image/svg+xml" src= {{ wood|safe }} />
+        </div>
+  </div>
+</div>
+
+
+{% endblock %}  

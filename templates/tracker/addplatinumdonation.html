@@ -1,0 +1,27 @@
+{% extends "tracker/Base.html" %}
+{% block body %}
+<h5> add platinum donation info </h5>
+please don't mess with if you managed to find this page
+{% if successalert %}
+<div class="alert alert-dark" role="alert">
+  {{ successalert }}
+</div>
+{% endif %}
+
+
+<form action="" method="POST" style="max-width:50%; margin:auto">
+    <strong> Date </strong>
+    <div class="form-row date" data-provider="datepicker">
+        <input type="date" class="form-control" date-date-end-date="0d" value= "{{ request.form.date }}" name="date">
+   	</div>
+   		<br>
+    <div>
+    	Player Name &nbsp;<input type='text' class="form-control" value = "{{ request.form.username }}" name="username"/>
+    	Plat Amount &nbsp;<input type='number' class="form-control" value = "{{ request.form.amount }}" name="amount"/>
+    	
+     	<input class="btn btn-alert" type="submit" value="Submit" style="margin:auto">    
+	</div>
+</form>
+
+
+{% endblock %}

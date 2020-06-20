@@ -1,0 +1,30 @@
+# following snippets taken from the github Python template
+__pycache__/
+
+# Flask stuff:
+instance/
+.webassets-cache
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IPython
+profile_default/
+ipython_config.py
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+##project specific
+badfolder/
+flaskapp.sock
+Useful_Info.log
+super_secret_stuff.py
+static/KinshipList(1).pdf
+templates/familyfamilyfamily.html

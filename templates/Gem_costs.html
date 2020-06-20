@@ -1,0 +1,37 @@
+{% extends "Base.html" %}
+{% block body %}
+
+<div class="tab-content">
+  <div id="recipe" class="tab-pane in active">
+     <!--  Table containing the Gems down the left and their ingredients down the right-->
+     <table class = "table-striped table-hover" id="List1" >
+     	<thead>
+     		<tr><th>Gem</th><th>Ingredients</th><th></th><th></th><th></th></tr></thead>
+     	<tbody>
+     	{% for piss in recipies %}
+     		<tr>  <td class="gem"><strong> {{ piss }} </strong></td>
+     	 {% if recipies[piss]|count == 4 %}
+     	      	{% for shit in range(recipies[piss]|count ) %}
+     			<td> {{ recipies[piss][shit] }} </td>
+     		{% endfor %}
+     	{% elif recipies[piss]|count == 3 %} <!-- add empty <td> at spot 4, DataTables needsnequal sized columns-->
+     	      	{% for shit in range(recipies[piss]|count ) %}
+     			<td> {{ recipies[piss][shit] }} </td>
+     		{% endfor %}
+     		<td></td>
+       	{% elif recipies[piss]|count == 2 %} 
+     	      	{% for shit in range(recipies[piss]|count ) %}
+     		<td> {{ recipies[piss][shit] }} </td>
+     		{% endfor %}
+     		<td></td>
+     		<td></td>
+     	{% endif %}
+     		
+     	</tr>
+     {% endfor %}
+     </tbody>
+     </table>      
+  </div>
+ </div>
+
+{% endblock %}  
