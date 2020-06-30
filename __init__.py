@@ -15,7 +15,7 @@ from __clanhighlevelgraphs__ import ParseClanAndRenderData
 from __pygalconfigs__ import PygalConfigFile, PygalConfigFileBlue
 from __MemberTopTens__ import GenerateTopTenLists
 #db connaction info
-from super_sercret_stuff import conn, notaconn,activesconn
+from super_secret_stuff import conn, notaconn,activesconn
 
 config = PygalConfigFile()
 configB = PygalConfigFileBlue()
